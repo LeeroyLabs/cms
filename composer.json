@@ -1,5 +1,8 @@
 {
     "name": "leeroy/cms",
+    "license": "MIT",
+    "prefer-stable": true,
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Marc Giroux",
