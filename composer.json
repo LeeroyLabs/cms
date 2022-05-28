@@ -19,7 +19,7 @@
     "require": {
         "php": ">=8.0",
         "ext-mongodb": "*",
-        "leeroy/sailcms": "^3.0.0"
+        "leeroy/sailcms": "dev-release/3.0.0"
     },
     "autoload": {
         "psr-4": {
