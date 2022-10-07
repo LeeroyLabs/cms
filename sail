@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use SailCMS\Installer;
+use SailCMS\CLI;
 
-Installer::run(path: __DIR__);
+$cli = new CLI(path: __DIR__);
+$cli->run();
