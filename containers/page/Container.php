@@ -46,4 +46,9 @@ class Container extends AppContainer
     {
         return new Collection([]);
     }
+
+    public function events(): void
+    {
+        // TODO: Implement events() method.
+    }
 }
