@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4be74d0f3162daa4742c85d64ab5fc94",
+    "content-hash": "bef972831ddb356fc253a2a5d9bb7eee",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -654,16 +654,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.4.1",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "69568e4293f4fa993f3b0e51c9723e1e17c41379"
+                "reference": "3148458748274be1546f8f2809a6c09fe66f44aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/69568e4293f4fa993f3b0e51c9723e1e17c41379",
-                "reference": "69568e4293f4fa993f3b0e51c9723e1e17c41379",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/3148458748274be1546f8f2809a6c09fe66f44aa",
+                "reference": "3148458748274be1546f8f2809a6c09fe66f44aa",
                 "shasum": ""
             },
             "require": {
@@ -753,7 +753,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.4.1"
+                "source": "https://github.com/guzzle/psr7/tree/2.4.2"
             },
             "funding": [
                 {
@@ -769,7 +769,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-28T14:45:39+00:00"
+            "time": "2022-10-25T13:49:28+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -1030,16 +1030,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.10.1",
+            "version": "3.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "9857d7208a94fc63c7bf09caf223280e59ac7274"
+                "reference": "b9bd194b016114d6ff6765c09d40c7d427e4e3f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/9857d7208a94fc63c7bf09caf223280e59ac7274",
-                "reference": "9857d7208a94fc63c7bf09caf223280e59ac7274",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/b9bd194b016114d6ff6765c09d40c7d427e4e3f6",
+                "reference": "b9bd194b016114d6ff6765c09d40c7d427e4e3f6",
                 "shasum": ""
             },
             "require": {
@@ -1101,7 +1101,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.10.1"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.10.2"
             },
             "funding": [
                 {
@@ -1117,7 +1117,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-21T18:57:47+00:00"
+            "time": "2022-10-25T07:01:47+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -1180,8 +1180,8 @@
             "version": "dev-feature/cms-entry",
             "dist": {
                 "type": "path",
-                "url": "/home/leeroy/Projects/sailcms",
-                "reference": "3ad55229febc7245522133af0f6bbe414bae1d21"
+                "url": "/home/delau/projects/sailcms",
+                "reference": "5dc874f8782f137cf2c4e229b9ef99c4ad01b3bc"
             },
             "require": {
                 "bacon/bacon-qr-code": "^2.0",
