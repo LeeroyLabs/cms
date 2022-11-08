@@ -19,7 +19,7 @@ class Container extends AppContainer
 
     public function routes(): void
     {
-        $this->router->get('/', 'fr', Page::class, 'home', 'pages');
+        $this->router->get('/page', 'fr', Page::class, 'home', 'pages');
     }
 
     public function configureSearch(): void

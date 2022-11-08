@@ -27,10 +27,10 @@ class Page extends AppController
         if (!$pageEntryType) {
             $entryTypeModel->createOne('page', 'Page', '');
         }
-        echo "<pre>";
-        print_r(Entry::getAll());
-        echo "</pre>";
-        die();
+//        echo "<pre>";
+//        print_r(Entry::getAll());
+//        echo "</pre>";
+//        die();
 
         // It's only for test purpose we can use getByHandle when it's created instead
 //        try
@@ -58,7 +58,7 @@ class Page extends AppController
 //            $this->response->set('title', $pageEntry->title);
 //        }
 
-        $this->response->set('error', $error);
+        $this->response->set('error', "ALLO");
 
         $this->response->template = 'default/page';
     }

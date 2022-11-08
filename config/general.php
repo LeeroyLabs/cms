@@ -1,10 +1,25 @@
 <?php
 
+use SailCMS\Assets\Transformer;
+
 $config = [
     'dev' => [
         'devMode' => true,
         'allowAdmin' => true,
         'adminTrigger' => 'admin',
+        'emails' => [
+            'from' => 'no-reply@leeroy.ca',
+            'sendNewAccount' => false,
+            'templates' => [
+                'new_account' => 'default/email/account'
+            ]
+        ],
+        'passwords' => [
+            'minLength' => 8,
+            'maxLength' => 64,
+            'enforceAlphanum' => true,
+            'enforceUpperLower' => true
+        ],
         'CSRF' => [
             'use' => true,
             'leeway' => 5,
@@ -57,12 +72,36 @@ $config = [
             ],
             'minLevel' => \Monolog\Level::Debug,
             'bubble' => true
+        ],
+        'assets' => [
+            'adapter' => 'local',
+            'optimizeOnUpload' => true,
+            'transformOutputFormat' => 'webp',
+            'transformQuality' => 92, // 92%
+            'maxUploadSize' => 5, // in MB
+            'onUploadTransforms' => [
+                'thumbnail' => ['width' => 100, 'height' => 100, 'crop' => Transformer::CROP_CC]
+            ]
+        ],
+        'entry' => [
+            'defaultType' => [
+                'title' => 'Page',
+                'handle' => 'page',
+                'url_prefix' => ''
+            ]
         ]
     ],
     'staging' => [
         'devMode' => true,
         'allowAdmin' => true,
         'adminTrigger' => 'admin',
+        'emails' => [
+            'from' => 'no-reply@sailcms.io',
+            'sendNewAccount' => false,
+            'templates' => [
+                'new_account' => 'default/email/account'
+            ]
+        ],
         'graphql' => [
             'active' => true,
             'trigger' => 'graphql',
@@ -95,12 +134,36 @@ $config = [
             ],
             'minLevel' => \Monolog\Level::Debug,
             'bubble' => true
+        ],
+        'assets' => [
+            'adapter' => 'local',
+            'optimizeOnUpload' => true,
+            'transformOutputFormat' => 'webp',
+            'transformQuality' => 92, // 92%
+            'maxUploadSize' => 5, // in MB
+            'onUploadTransforms' => [
+                'thumbnail' => ['size' => '100x100', 'crop' => Transformer::CROP_CC]
+            ]
+        ],
+        'entry' => [
+            'defaultType' => [
+                'title' => 'Page',
+                'handle' => 'page',
+                'url_prefix' => ''
+            ]
         ]
     ],
     'production' => [
         'devMode' => false,
         'allowAdmin' => true,
         'adminTrigger' => 'admin',
+        'emails' => [
+            'from' => 'no-reply@sailcms.io',
+            'sendNewAccount' => false,
+            'templates' => [
+                'new_account' => 'default/email/account'
+            ]
+        ],
         'graphql' => [
             'active' => true,
             'trigger' => 'graphql',
@@ -134,6 +197,23 @@ $config = [
             ],
             'minLevel' => \Monolog\Level::Debug,
             'bubble' => true
+        ],
+        'assets' => [
+            'adapter' => 'local',
+            'optimizeOnUpload' => true,
+            'transformOutputFormat' => 'webp',
+            'transformQuality' => 92, // 92%
+            'maxUploadSize' => 5, // in MB
+            'onUploadTransforms' => [
+                'thumbnail' => ['size' => '100x100', 'crop' => Transformer::CROP_CC]
+            ]
+        ],
+        'entry' => [
+            'defaultType' => [
+                'title' => 'Page',
+                'handle' => 'page',
+                'url_prefix' => ''
+            ]
         ]
     ]
 ];
