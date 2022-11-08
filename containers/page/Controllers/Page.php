@@ -19,7 +19,18 @@ class Page extends AppController
     public function home():void
     {
         $error = '';
-//        $pageEntryQs = new EntryType();
+
+        $entryTypeModel = new EntryType();
+
+        $pageEntryType = $entryTypeModel->getByHandle('page');
+
+        if (!$pageEntryType) {
+            $entryTypeModel->createOne('page', 'Page', '');
+        }
+        echo "<pre>";
+        print_r(Entry::getAll());
+        echo "</pre>";
+        die();
 
         // It's only for test purpose we can use getByHandle when it's created instead
 //        try
@@ -50,5 +61,10 @@ class Page extends AppController
         $this->response->set('error', $error);
 
         $this->response->template = 'default/page';
+    }
+
+    public function __toString(): string
+    {
+        return "Page controller";
     }
 }
