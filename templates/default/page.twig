@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ entry.title }}</title>
 </head>
 <body>
+    {% if entry %}
+        <div>
+            <p>{{ entry.title }}</p>
+        </div>
+
+        {% for key, content in entry.content %}
+            <p><strong>{{ key }}</strong></p>
+            <p>{{ content.blockTitle }}</p>
+            <p>{{ content.blockDescription|nl2br }}</p>
+        {% endfor %}
+    {% endif %}
+
+    {% if msgs|length > 0 %}
+        <ul>
+        {% for msg in msgs %}
+            <li>{{ msg }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
     {% if error %}
         <p>{{ error }}</p>
     {% endif %}

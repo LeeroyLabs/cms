@@ -1,17 +1,50 @@
 <?php
 
+use Monolog\Level;
 use SailCMS\Assets\Transformer;
+use SailCMS\Logging\Database;
+use SailCMS\Session\Stateless;
 
-$config = [
+return [
     'dev' => [
         'devMode' => true,
         'allowAdmin' => true,
         'adminTrigger' => 'admin',
+        'cache' => [
+            'use' => (bool)env('cache_use', 'false'),
+            'host' => env('cache_host', 'localhost'),
+            'user' => env('cache_user', ''),
+            'password' => env('cache_password', ''),
+            'port' => 6379,
+            'database' => 10,
+            'ssl' => [
+                'verify' => true,
+                'cafile' => '/path/to/file'
+            ]
+        ],
         'emails' => [
-            'from' => 'no-reply@leeroy.ca',
-            'sendNewAccount' => false,
-            'templates' => [
-                'new_account' => 'default/email/account'
+            'from' => 'no-reply@sailcms.io',
+            'sendNewAccount' => true,
+            'globalContext' => [
+                // You can add your own static context variables
+                'locales' => [
+                    'fr' => [
+                        'follow' => 'Suivez-nous',
+                        'privacy' => 'Politique de confidentialité',
+                        'contact' => 'Contactez nous',
+                        'faq' => 'FAQ',
+                        'team' => "L'équipe Cubeler",
+                        'thanks' => 'Merci'
+                    ],
+                    'en' => [
+                        'follow' => 'Follow Us',
+                        'privacy' => 'Privacy Policy',
+                        'contact' => 'Contact Us',
+                        'faq' => 'FAQ',
+                        'team' => 'The Cubeler Team',
+                        'thanks' => 'Thank'
+                    ]
+                ]
             ]
         ],
         'passwords' => [
@@ -36,16 +69,16 @@ $config = [
             'allowCredentials' => true,
             'maxAge' => 86400,
             'methods' => ['POST', 'GET', 'DELETE', 'PUT', 'OPTIONS'],
-            'headers' => ['Accept', 'Upgrade-Insecure-Requests', 'Content-Type', 'x-requested-with']
+            'headers' => ['Accept', 'Upgrade-Insecure-Requests', 'Content-Type', 'x-requested-with', 'x-access-token']
         ],
         'session' => [
-            'mode' => \SailCMS\Session\Stateless::class,
+            'mode' => Stateless::class,
             'httpOnly' => true,
             'samesite' => 'strict',
             'ttl' => 21_600, // 6h
             'jwt' => [
                 'issuer' => 'SailCMS',
-                'domain' => 'localhost'
+                'domain' => 'sailcms.site'
             ]
         ],
         'templating' => [
@@ -65,16 +98,16 @@ $config = [
             'useRay' => true,
             'loggerName' => 'sailcms',
             'adapters' => [
-                \SailCMS\Logging\Database::class
+                Database::class
             ],
             'datadog' => [
                 'api_key_identifier' => 'DD_DEFAULT_KEY'
             ],
-            'minLevel' => \Monolog\Level::Debug,
+            'minLevel' => Level::Debug,
             'bubble' => true
         ],
         'assets' => [
-            'adapter' => 'local',
+            'adapter' => 's3',
             'optimizeOnUpload' => true,
             'transformOutputFormat' => 'webp',
             'transformQuality' => 92, // 92%
@@ -86,8 +119,11 @@ $config = [
         'entry' => [
             'defaultType' => [
                 'title' => 'Page',
-                'handle' => 'page',
-                'url_prefix' => ''
+                'urlPrefix' => [
+                    'fr' => 'abc',
+                    'en' => 'efg'
+                ],
+                'entryLayoutId' => '639359dc2ce8dcaf4a06e090'
             ]
         ]
     ],
@@ -108,7 +144,7 @@ $config = [
             'depthLimit' => 5
         ],
         'session' => [
-            'mode' => 'standard' // or stateless (JWT)
+            'mode' => 'stateless' // or stateless (JWT)
         ],
         'templating' => [
             'cache' => false,
@@ -148,8 +184,10 @@ $config = [
         'entry' => [
             'defaultType' => [
                 'title' => 'Page',
-                'handle' => 'page',
-                'url_prefix' => ''
+                'urlPrefix' => [
+                    'fr' => 'abc',
+                    'en' => 'efg'
+                ]
             ]
         ]
     ],
@@ -211,8 +249,10 @@ $config = [
         'entry' => [
             'defaultType' => [
                 'title' => 'Page',
-                'handle' => 'page',
-                'url_prefix' => ''
+                'urlPrefix' => [
+                    'fr' => 'abc',
+                    'en' => 'efg'
+                ]
             ]
         ]
     ]

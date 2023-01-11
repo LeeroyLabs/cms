@@ -5,6 +5,7 @@ namespace Page;
 
 use JetBrains\PhpStorm\Pure;
 use Page\Controllers\Page;
+use Page\Fields\HeaderBlockField;
 use SailCMS\Types\ContainerInformation;
 use SailCMS\Contracts\AppContainer;
 use SailCMS\Collection;
@@ -19,7 +20,7 @@ class Container extends AppContainer
 
     public function routes(): void
     {
-        $this->router->get('/page', 'fr', Page::class, 'home', 'pages');
+        $this->router->get('/create-data', 'en', Page::class, 'create_data', 'pages');
     }
 
     public function configureSearch(): void
@@ -44,11 +45,18 @@ class Container extends AppContainer
 
     public function permissions(): Collection
     {
-        return new Collection([]);
+        return Collection::init();
     }
 
     public function events(): void
     {
         // TODO: Implement events() method.
+    }
+
+    public function fields(): Collection
+    {
+        return new Collection([
+            HeaderBlockField::info()
+        ]);
     }
 }
