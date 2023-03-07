@@ -1,16 +1,13 @@
 {
     "name": "leeroy/sailcms-app",
     "license": "MIT",
+    "description": "SailCMS installer project for composer",
     "prefer-stable": true,
     "minimum-stability": "dev",
     "authors": [
         {
             "name": "Marc Giroux",
             "email": "marc@leeroy.ca"
-        },
-        {
-            "name": "Philippe Bédard De Launière",
-            "email": "philippe@leeroy.ca"
         }
     ],
     "require-dev": {
