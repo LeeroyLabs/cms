@@ -6,6 +6,10 @@ namespace Page;
 use JetBrains\PhpStorm\Pure;
 use Page\Controllers\Page;
 use Page\Fields\HeaderBlockField;
+use Page\Middleware\TestMiddleware;
+use SailCMS\Event;
+use SailCMS\Middleware;
+use SailCMS\Models\Entry;
 use SailCMS\Types\ContainerInformation;
 use SailCMS\Contracts\AppContainer;
 use SailCMS\Collection;
@@ -40,7 +44,7 @@ class Container extends AppContainer
 
     public function middleware(): void
     {
-        // TODO: Implement middleware() method.
+        Middleware::register(new TestMiddleware());
     }
 
     public function permissions(): Collection
@@ -51,6 +55,9 @@ class Container extends AppContainer
     public function events(): void
     {
         // TODO: Implement events() method.
+        Event::register(Entry::EVENT_CREATE, self::class, 'entryPostCreate');
+        Event::register(Entry::EVENT_UPDATE, self::class, 'entryPostUpdate');
+        Event::register(Entry::EVENT_DELETE, self::class, 'entryPostDelete');
     }
 
     public function fields(): Collection
@@ -58,5 +65,24 @@ class Container extends AppContainer
         return new Collection([
             HeaderBlockField::info()
         ]);
+    }
+
+    /** EVENTS TESTS */
+    public function entryPostCreate($event, $data) {
+        /**
+         * @var Entry $entry;
+         */
+        $entry = $data['entry'];
+        print_r($entry->url);
+    }
+
+    public function entryPostUpdate($event, $data) {git st
+        if ($data['entry']->title === $data['update']['title']) {
+           print_r('allllllllo');
+        }
+    }
+
+    public function entryPostDelete($event, $data) {
+        print_r($data['entryId']);
     }
 }

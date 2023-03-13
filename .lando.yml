@@ -1,0 +1,25 @@
+name: assq-api
+recipe: laravel
+config:
+  webroot: web
+  php: "8.2"
+services:
+  database:
+    type: mongo
+    portforward: 51751
+  appserver:
+    type: php:8.2
+    ports:
+      - 5400:80
+    build_as_root:
+      - pecl install mongodb && docker-php-ext-enable mongodbl
+      - cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+      - echo "extension=mongodb" >> /usr/local/etc/php/php.ini
+      - sed -i "s|extension=mongodb|; extension=mongodb |g" /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
+      - composer install
+      - composer dump-autoload -a
+
+tooling:
+  mongo:
+    service: database
+    description: Drop into the mongo shell

@@ -10,10 +10,16 @@
             <p>{{ entry.title }}</p>
         </div>
 
+
+
         {% for key, content in entry.content %}
             <p><strong>{{ key }}</strong></p>
-            <p>{{ content.blockTitle }}</p>
-            <p>{{ content.blockDescription|nl2br }}</p>
+            {% if key == "headerBlock" %}
+                <p>{{ content.blockTitle }}</p>
+                <p>{{ content.blockDescription|nl2br }}</p>
+            {% else %}
+                <p>{{ content.0 }}</p>
+            {% endif %}
         {% endfor %}
     {% endif %}
 

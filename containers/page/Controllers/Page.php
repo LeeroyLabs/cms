@@ -10,6 +10,7 @@ use SailCMS\Contracts\AppController;
 use SailCMS\Errors\ACLException;
 use SailCMS\Errors\DatabaseException;
 use SailCMS\Errors\EntryException;
+use SailCMS\Errors\FieldException;
 use SailCMS\Errors\PermissionException;
 use SailCMS\Http\Response;
 use SailCMS\Models\EntryLayout;
@@ -29,6 +30,7 @@ class Page extends AppController
      * @throws FilesystemException
      * @throws ACLException
      * @throws PermissionException
+     * @throws FieldException
      * @throws SodiumException
      *
      */
@@ -49,7 +51,7 @@ class Page extends AppController
         $page = $pageModel->one(['slug' => 'home']);
 
         if (!$page) {
-            $page = $pageModel->create(true, 'en', EntryStatus::LIVE->value, 'Home');
+            $page = $pageModel->create(true, 'en', EntryStatus::LIVE->value, 'Home', 'default/page');
 
             $msgs->push('Page created');
         }
@@ -84,8 +86,8 @@ class Page extends AppController
                 $pageModel->updateById($page->_id, ['content' => [
                     'headerBlock' => [
                         'blockTitle' => 'This is the home page',
-                        'blockDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Praesent gravida metus in ipsum rhoncus congue. Curabitur luctus velit mauris, ut sagittis tellus pharetra at. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec lacinia tellus, commodo elementum erat. 
+                        'blockDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Praesent gravida metus in ipsum rhoncus congue. Curabitur luctus velit mauris, ut sagittis tellus pharetra at. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec lacinia tellus, commodo elementum erat.
 Integer dictum diam viverra sodales eleifend. In sit amet vestibulum augue. In feugiat eu tortor sed varius. Suspendisse quis suscipit eros. Aenean elit odio, semper in suscipit et, elementum ut diam. Morbi sed auctor nulla, id sollicitudin odio. '
                     ]
                 ]]);
