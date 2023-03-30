@@ -51,7 +51,7 @@ class Page extends AppController
         $page = $pageModel->one(['slug' => 'home']);
 
         if (!$page) {
-            $page = $pageModel->create(true, 'en', EntryStatus::LIVE->value, 'Home', 'default/page');
+            $page = $pageModel->create(true, 'en','Home', 'default/page');
 
             $msgs->push('Page created');
         }
