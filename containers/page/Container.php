@@ -7,6 +7,7 @@ use JetBrains\PhpStorm\Pure;
 use Page\Controllers\Page;
 use Page\Fields\HeaderBlockField;
 use Page\Middleware\TestMiddleware;
+use SailCMS\Debug;
 use SailCMS\Event;
 use SailCMS\Middleware;
 use SailCMS\Models\Entry;
